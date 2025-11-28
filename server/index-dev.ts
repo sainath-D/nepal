@@ -1,17 +1,19 @@
+import fs from "node:fs";
+import path from "node:path";
+import { type Server } from "node:http";
+
+import { nanoid } from "nanoid";
 import { type Express } from "express";
 import { createServer as createViteServer, createLogger } from "vite";
-import { type Server } from "http";
+
 import viteConfig from "../vite.config";
-import fs from "fs";
-import path from "path";
-import { nanoid } from "nanoid";
+import runApp from "./app";
 
-const viteLogger = createLogger();
-
-export async function setupVite(server: Server, app: Express) {
+export async function setupVite(app: Express, server: Server) {
+  const viteLogger = createLogger();
   const serverOptions = {
     middlewareMode: true,
-    hmr: { server, path: "/vite-hmr" },
+    hmr: { server },
     allowedHosts: true as const,
   };
 
@@ -30,7 +32,6 @@ export async function setupVite(server: Server, app: Express) {
   });
 
   app.use(vite.middlewares);
-
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
 
@@ -56,3 +57,7 @@ export async function setupVite(server: Server, app: Express) {
     }
   });
 }
+
+(async () => {
+  await runApp(setupVite);
+})();

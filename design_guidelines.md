@@ -1,85 +1,159 @@
-# Design Guidelines: Professional Resume Website
+# Nepal Science Navigators (NSN) Science Fair Website - Design Guidelines
 
 ## Design Approach
-**Hybrid Approach**: Inspired by modern developer portfolios (Linear's clarity + Notion's organization) with professional resume conventions. Clean, content-focused design that establishes credibility while showcasing personality.
+**Custom NSN Theme** - Futuristic science-inspired design with unique identity (NOT generic or Rotary-style)
 
-## Typography System
-- **Primary Font**: Inter or similar geometric sans-serif (Google Fonts)
-- **Hierarchy**:
-  - Name/Hero: text-5xl to text-7xl, font-bold
-  - Section Headings: text-3xl to text-4xl, font-semibold
-  - Job Titles/Project Names: text-xl to text-2xl, font-medium
-  - Body Text: text-base to text-lg, font-normal
-  - Metadata (dates, locations): text-sm, font-normal
-- **Line Height**: Generous spacing (leading-relaxed for body, leading-tight for headings)
+## Color Palette
+- **Deep Space Blue**: #0A1A3A (Primary backgrounds, headers)
+- **Aurora Cyan**: #1ECBE1 (Accent, CTAs, highlights)
+- **Stellar White**: #F5FAFF (Text, cards, content backgrounds)
+- **Solar Gold**: #D7A028 (Secondary accent, awards, highlights)
+- **Planet Grey**: #8A8FA3 (Secondary text, borders, subtle elements)
+
+## Visual Style
+- Soft gradients with subtle color transitions
+- Glow effects on interactive elements and accents
+- Thin neon borders (Aurora Cyan) on cards and sections
+- Smooth shadows with depth
+- Rounded layouts throughout (border-radius: 12-24px)
+- Minimal clutter with generous whitespace
+- Modern scientific aesthetic
+
+## Typography
+- **Headings**: Poppins or Montserrat (bold, modern, impactful)
+- **Body Text**: Inter (clean, highly readable)
+- Consistent hierarchy with clear size differentiation
 
 ## Layout System
-- **Container**: max-w-6xl mx-auto for main content
-- **Spacing Units**: Use Tailwind units of 4, 8, 12, 16, 20, 24 for consistent rhythm
-  - Section padding: py-16 to py-24
-  - Component spacing: space-y-8 to space-y-12
-  - Element margins: mb-4, mb-8, mb-12
-- **Grid Structure**: 
-  - Single column for content flow (max-w-4xl for text-heavy sections)
-  - Two-column split for experience/education details (lg:grid-cols-[200px_1fr])
-  - Three-column grid for skills showcase (grid-cols-2 md:grid-cols-3 lg:grid-cols-4)
+- Tailwind spacing: Primarily use units of 4, 6, 8, 12, 16 for consistency
+- Container max-widths: max-w-7xl for main content areas
+- Responsive grid systems for cards and content sections
+
+## Motion & Animation Strategy
+**Every UI element must have smooth, professional motion:**
+- Page load transitions (fade-in, slide-up)
+- Section animations (slide/fade on scroll)
+- Button hover effects (scale, glow, shadow lift)
+- Card hover animations (lift-up transform with shadow expansion)
+- Menu open/close (smooth slide with fade)
+- Image zoom on hover (subtle scale transform)
+- Input focus animations (border glow, label float)
+- Dashboard table row animations (stagger on load)
+- Gallery lightbox (fade + scale)
+- Hero text effects (typing animation or staggered fade-in)
+- Statistics counter animations (count-up effect)
+- Smooth scroll behavior throughout
+
+**Animation principles:**
+- Use Framer Motion for React components
+- Easing: easeOut, spring physics
+- Duration: 200-400ms for micro-interactions, 600-800ms for transitions
+- No lag or jitter - optimize performance
+
+## Page-Specific Designs
+
+### Home
+- Animated hero section with futuristic background treatment
+- Hero text with typing or fade animation
+- Premium banners with Aurora Cyan accents
+- Animated statistics counters (number count-up effect)
+- Upcoming events card with hover effects
+- All sections with motion-enhanced entry
+
+### About
+- Animated founder highlight section with image and bio
+- Mission/vision cards with fade-in stagger
+- Animated timeline for history
+- Board of Directors grid (3-7 members) with hover lift effects
+
+### Categories
+- Science category cards (Physics, Chemistry, Biology, Coding, Robotics, Environment)
+- Category icons with Aurora Cyan glow on hover
+- Card lift and shadow expansion on hover
+
+### Schedule
+- Animated vertical timeline design
+- Collapsible session cards
+- Judges list with profile cards
+- Time-based visual indicators
+
+### Gallery
+- Masonry grid layout (12-20 images)
+- Animated category filtering
+- Lightbox with zoom-in animation and smooth transitions
+- Image hover with zoom effect
+
+### Blog
+- Blog article cards (3-6 mock articles)
+- Animated card hover with lift effect
+- Detailed blog view with smooth transitions
+
+### News
+- Science news cards (4-8 entries)
+- External link buttons with animation
+- Card hover effects
+
+### Notices
+- Pinned notices at top
+- Urgent notices with Aurora Cyan pulse effect
+- Card-based layout with priority indicators
+
+### Videos
+- Embedded YouTube videos (3 sample links)
+- Animated thumbnail hover effects
+- Grid layout
+
+### Contact
+- Contact form with input focus animations (glow, label float)
+- Embedded map
+- Contact information cards
+- Submit button with loading animation
 
 ## Component Library
 
-### Hero Section
-- Full-width section (min-h-screen or 80vh)
-- Centered content with name, professional title, 2-3 sentence summary
-- Professional headshot image (circular, 200-300px) or minimal abstract background
-- Primary CTA buttons: "Download Resume" and "Contact Me" with backdrop-blur-md bg-white/10 treatment
-- Social links (LinkedIn, GitHub, etc.) with icon library integration
+### Navigation
+- Sticky header with blur backdrop
+- Animated menu items
+- Mobile hamburger with smooth slide animation
+- Aurora Cyan active state indicators
 
-### Experience Section
-- Timeline layout with left-aligned dates, right-aligned content
-- Each entry: Company name (bold), job title, date range, bullet points of achievements
-- Consistent card-based or borderless list format
-- Visual hierarchy through font weights and spacing, not dividers
+### Cards
+- Rounded corners (16-20px)
+- Thin neon borders with Aurora Cyan
+- Soft shadows
+- Hover: lift transform + shadow expansion
+- Smooth transitions
 
-### Skills Section
-- Tag/badge design for individual skills
-- Grouped by category (Technical Skills, Tools, Soft Skills)
-- Grid layout with rounded pills (px-4 py-2, rounded-full)
-- Icons from Heroicons or Font Awesome beside skill names
+### Buttons
+- Primary: Aurora Cyan background with glow effect
+- Secondary: Solar Gold accents
+- Hover: scale transform + intensified glow
+- Active state with subtle press effect
+- Blurred backgrounds when on images
 
-### Projects Portfolio
-- Card-based grid (2 columns on desktop, 1 on mobile)
-- Each card: Project name, brief description, tech stack tags, links to live demo/GitHub
-- Subtle hover elevation (hover:shadow-lg transition)
-- Optional: Small preview image or icon representation
+### Forms
+- Floating labels
+- Aurora Cyan focus glow on inputs
+- Smooth validation animations
+- Autosave indicator animations
 
-### Education Section
-- Similar structure to experience (institution, degree, dates, honors)
-- More compact spacing than work experience
-- Include relevant coursework or certifications as supplementary info
+### Dashboard Specific
+- Animated sidebar navigation
+- Live preview panel
+- Rich text editor interface
+- Modal dialogs with fade + scale entrance
+- Table row stagger animations
+- Drag-and-drop with smooth feedback
 
-### Contact Section
-- Clean, minimal footer-style section
-- Email (clickable mailto:), phone, location
-- Social media icon links (LinkedIn, GitHub, Twitter, etc.)
-- Simple text-based, no form needed for resume site
+## Images
+- **Hero Section**: Large, futuristic science-themed background image with overlay gradient (Deep Space Blue to transparent)
+- **About Page**: Founder portrait, BOD member photos
+- **Gallery**: 12-20 science fair event photos in masonry layout
+- **Blog**: Featured images for articles
+- All images with subtle zoom on hover
 
-## Image Strategy
-- **Hero Image**: Professional headshot (circular mask) OR subtle gradient/pattern background - not a large hero image
-- **Project Thumbnails**: Small preview images in project cards (aspect-ratio-video, object-cover)
-- **Icons**: Use Heroicons exclusively for consistency across social links, skills, and contact info
-
-## Responsive Behavior
-- Mobile-first approach
-- Stack all multi-column layouts to single column on mobile
-- Reduce hero text sizes (text-4xl on mobile vs text-7xl desktop)
-- Maintain comfortable reading width on all devices (never full-width text blocks)
-
-## Key Interactions
-- Smooth scroll behavior for navigation anchors
-- Minimal animations: subtle fade-in on scroll for sections (optional intersection observer)
-- Hover states only on interactive elements (links, buttons, cards)
-- No distracting motion - focus on content
-
-## Navigation
-- Sticky header with anchor links to sections (Hero, Experience, Skills, Education, Projects, Contact)
-- Simple horizontal nav on desktop, hamburger on mobile
-- Smooth scroll to section behavior
+## Footer
+- Multi-column layout
+- Social links with hover animations
+- Newsletter signup with animated input
+- Deep Space Blue background with subtle gradient
