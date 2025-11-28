@@ -96,7 +96,7 @@ export default function Navigation() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  NSN
+                  NEPAL
                 </motion.span>
                 <motion.span 
                   className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-xs font-semibold tracking-widest"
@@ -104,7 +104,7 @@ export default function Navigation() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  SCIENCE FAIR
+                  SCIENCE NAVIGATORS
                 </motion.span>
               </div>
             </motion.div>
