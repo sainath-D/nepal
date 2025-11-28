@@ -4,125 +4,98 @@ A modern, responsive website for Nepal Science Navigators - Nepal's premier scie
 
 ## Features
 
-- **Home Page**: Dynamic hero section with statistics and call-to-action
-- **About Page**: Organization mission, vision, founder info, and board members
-- **Categories**: Browse science fair competition categories
-- **Schedule**: Event timeline with dates, times, and locations
-- **Blog**: Articles and insights about science education
-- **Gallery**: Photo gallery from past events
-- **News**: Latest science news and updates
-- **Notices**: Important announcements and updates
-- **Videos**: YouTube video gallery
-- **Contact**: Contact form for inquiries
+- **12 Pages**: Home, About, Categories, Schedule, Blog, Gallery, News, Notices, Videos, Contact, Admin Dashboard, Admin Login
+- **Responsive Design**: Works on mobile, tablet, and desktop
+- **Smooth Animations**: Framer Motion animations throughout
 - **Admin Dashboard**: Full content management system
+- **Contact Form**: User inquiry submission
 
 ## Tech Stack
 
-- **Frontend**: React 18, TypeScript, Tailwind CSS, Shadcn/UI
-- **Backend**: Node.js, Express.js
-- **Styling**: Tailwind CSS with custom design system
-- **Animations**: Framer Motion
-- **State Management**: TanStack Query
-- **Routing**: Wouter
-- **Authentication**: Passport.js with session-based auth
+- React 18 + TypeScript
+- Express.js backend
+- Tailwind CSS + Shadcn/UI
+- Framer Motion animations
+- Wouter routing
 
-## Getting Started
+## Local Development
 
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/nsn-science-fair.git
-cd nsn-science-fair
-```
-
-2. Install dependencies:
-```bash
+# Install dependencies
 npm install
-```
 
-3. Start the development server:
-```bash
+# Start development server
 npm run dev
 ```
 
-The app will be available at `http://localhost:5000`
+The app runs at `http://localhost:5000`
+
+## Deployment to Render
+
+### Option 1: Deploy from GitHub
+
+1. Push this code to a GitHub repository
+2. Go to [Render Dashboard](https://dashboard.render.com)
+3. Click "New" → "Web Service"
+4. Connect your GitHub repository
+5. Configure:
+   - **Build Command**: `npm install && npm run build`
+   - **Start Command**: `npm start`
+   - **Environment Variables**:
+     - `SESSION_SECRET` = (generate a random string)
+     - `NODE_ENV` = `production`
+
+### Option 2: Deploy with render.yaml
+
+Create a `render.yaml` file in your repo:
+
+```yaml
+services:
+  - type: web
+    name: nsn-science-fair
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+```
 
 ## Environment Variables
 
-Create a `.env` file in the root directory:
-
-```env
-# Required
-SESSION_SECRET=your-secure-session-secret
-
-# Optional - for MongoDB persistence (uses in-memory storage by default)
-MONGODB_URI=mongodb://your-mongodb-connection-string
-```
-
-## Building for Production
-
-```bash
-npm run build
-npm start
-```
-
-## Deployment
-
-### Render
-
-1. Create a new Web Service on Render
-2. Connect your GitHub repository
-3. Set the following:
-   - **Build Command**: `npm install && npm run build`
-   - **Start Command**: `npm start`
-   - **Environment Variables**: Add `SESSION_SECRET`
-
-### Other Platforms
-
-The app can be deployed to any Node.js hosting platform:
-- Heroku
-- Railway
-- Fly.io
-- DigitalOcean App Platform
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `SESSION_SECRET` | Yes (production) | Secret for session encryption |
+| `NODE_ENV` | No | Set to `production` for production builds |
 
 ## Admin Access
 
-Default admin credentials:
-- **Username**: admin
-- **Password**: admin123
+Default credentials:
+- **Username**: `admin`
+- **Password**: `admin123`
 
 **Important**: Change the default password after first login!
 
 ## Project Structure
 
 ```
-├── client/                 # Frontend React application
+├── client/           # React frontend
 │   ├── src/
-│   │   ├── components/     # Reusable UI components
-│   │   ├── pages/          # Page components
-│   │   ├── hooks/          # Custom React hooks
-│   │   └── lib/            # Utility functions
-│   └── index.html
-├── server/                 # Backend Express application
-│   ├── routes.ts           # API routes
-│   ├── storage.ts          # Data storage layer
-│   └── auth.ts             # Authentication setup
-├── shared/                 # Shared types and schemas
-│   ├── schema.ts           # Database schema
-│   └── types.ts            # TypeScript types
-└── package.json
+│   │   ├── components/
+│   │   └── pages/
+├── server/           # Express backend
+│   ├── routes.ts
+│   ├── storage.ts
+│   └── auth.ts
+└── shared/           # Shared types
 ```
+
+## Data Storage
+
+The application uses in-memory storage with preloaded mock data. Data resets on server restart, which is ideal for demo/showcase purposes.
 
 ## License
 
-MIT License
-
-## Support
-
-For questions or support, contact info@nsnsciencefair.org
+MIT
