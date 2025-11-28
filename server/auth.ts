@@ -32,8 +32,12 @@ async function comparePasswords(supplied: string, stored: string) {
 export function setupAuth(app: Express) {
   const MemoryStore = createMemoryStore(session);
 
+  if (!process.env.SESSION_SECRET && process.env.NODE_ENV === "production") {
+    throw new Error("SESSION_SECRET environment variable must be set in production");
+  }
+
   const sessionSettings: session.SessionOptions = {
-    secret: process.env.SESSION_SECRET || "nsn-science-fair-secret-key-2024",
+    secret: process.env.SESSION_SECRET || "dev-only-secret-not-for-production",
     resave: false,
     saveUninitialized: false,
     store: new MemoryStore({
